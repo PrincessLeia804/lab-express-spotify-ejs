@@ -37,29 +37,23 @@ app.get('/:artistId', async (req, res) => {
 
     try{
         let artists = await spotifyApi.searchArtists(req.query.artistSearch)
-        // let artistId = artist.body.artists.items[0].id
-        // let albums = await spotifyApi.getArtistAlbums(artistId)
+       
         res.render("artist-search-results", {data : artists})
 
-    } catch(e) {
-        console.log(e);
+    } catch(err) {
+        console.log(err);
     }
 })
 
-app.get('/:albumsId', async (req, res) => {
-
+app.get('/albums/:albumsId', async (req, res) => {
     try{
-        let albums = await spotifyApi.getArtistAlbums(req.query.artistId)
-        res.render("artist-search-results", {data : albums})
+        let albums = await spotifyApi.getArtistAlbums(req.params.albumsId)
+        res.render("album-results", {data : albums})
 
-    } catch(e) {
-        console.log(e);
+    } catch(err) {
+        console.log(err);
     }
 })
 
-
-app.get('/artist-search', (req, res) => {
-    res.render('artist-search-results')
-})
 
 app.listen(3000, () => console.log('My Spotify project running on port 3000 🎧 🥁 🎸 🔊'))

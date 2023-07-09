@@ -1,12 +1,17 @@
-<div>
-  <!-- Artist name -->
-  <h2><%- data.body.items.artists.name %></h2>
-  
+<!-- Artist name -->
+<h2><%- data.body.items[0].artists[0].name %></h2>
+<div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap">
+
   <!-- display all album names with image  -->
-  <% array.forEach(element => { %>
-    <%- data.body.items.name %> 
-    <%- data.body.items.images[0] %> 
-   
+  <% data.body.items.forEach(album => { %>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; width: 300px;">
+    <%- album.name %> 
+    <% if(album.images.length){ %>
+      <img src="<%- album.images[2].url %>">
+      <% } else{ %>
+      <img alt="No Picture Available">
+      <% } %>
+    </div>
   <% }) %>
 
 </div>
