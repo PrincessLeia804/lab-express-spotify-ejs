@@ -1,5 +1,11 @@
 <div>
-    <!-- name, image, button -->
-    <%= artist.artists %>
+  <!-- name, image, button -->
+  <h2><%- data.body.items.artists.name %></h2>
+  <%- data.body.items.images[0] %> 
+
+  <a href="/albums/<%- data.body.items.artists.id %>">
+    <input type="button" name="albumList" value="View Albums">
+  </a>
+
 
 </div>

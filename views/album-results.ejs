@@ -1,0 +1,12 @@
+<div>
+  <!-- Artist name -->
+  <h2><%- data.body.items.artists.name %></h2>
+  
+  <!-- display all album names with image  -->
+  <% array.forEach(element => { %>
+    <%- data.body.items.name %> 
+    <%- data.body.items.images[0] %> 
+   
+  <% }) %>
+
+</div>

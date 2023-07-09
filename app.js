@@ -13,8 +13,8 @@ app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 app.use(express.static(__dirname + '/public'))
 
-const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: true }))
+// const bodyParser = require('body-parser')
+// app.use(bodyParser.urlencoded({ extended: true }))
 
 // setting the spotify-api goes here:
 const spotifyApi = new SpotifyWebApi({
@@ -32,20 +32,29 @@ const spotifyApi = new SpotifyWebApi({
 app.get('/', (req, res) => {
     res.render('index')
 })
+            
+app.get('/:artistId', async (req, res) => {
 
-app.get('/:artistId', (req, res) => {
-    console.log(req.query.name);
+    try{
+        let artists = await spotifyApi.searchArtists(req.query.artistSearch)
+        // let artistId = artist.body.artists.items[0].id
+        // let albums = await spotifyApi.getArtistAlbums(artistId)
+        res.render("artist-search-results", {data : artists})
 
-    spotifyApi
-        .searchArtists(req.query.name)
-        .then(data => {
-            console.log('The received data from the API: ', data.body.artists.items)
-            // save data in variables before rendering
+    } catch(e) {
+        console.log(e);
+    }
+})
 
-            // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
-            res.render("artist-search-results", {artist: data})
-        })
-        .catch(err => console.log('The error while searching artists occurred: ', err))
+app.get('/:albumsId', async (req, res) => {
+
+    try{
+        let albums = await spotifyApi.getArtistAlbums(req.query.artistId)
+        res.render("artist-search-results", {data : albums})
+
+    } catch(e) {
+        console.log(e);
+    }
 })
 
 
