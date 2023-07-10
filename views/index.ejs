@@ -1,12 +1,39 @@
-
-    <form action="/artist-search" method="GET" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end;">
-        <div>
-          <label for="name"></label>
-          <input type="text" name="artistSearch" id="name" required placeholder="Artist">
+<div
+  class="d-flex justify-content-center align-items-center"
+  style="margin-top: 250px"
+>
+  <form
+    action="/artist-search"
+    method="GET"
+    style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    "
+  >
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Artist Search</h5>
+        <!-- <p class="card-text">Enter a artist name</p> -->
+        <div class="input-group mb-3">
+          <input
+            placeholder="Enter a artist name..."
+            type="text"
+            class="form-control"
+            name="artistSearch"
+            id="name"
+            required
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default"
+          />
         </div>
-
-        <!-- button -->
-        <div>
-          <input type="submit" value="Search for an Artist">
-        </div>
-      </form>
+        <input
+          class="btn btn-primary"
+          type="submit"
+          value="Search for an Artist"
+        />
+      </div>
+    </div>
+  </form>
+</div>

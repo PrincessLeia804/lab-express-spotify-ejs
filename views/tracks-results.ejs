@@ -1,17 +1,22 @@
+<!-- display all album tracks with preview  -->
 
-  <!-- display all album tracks with preview  -->
-  <table style="width:100%">
-    <tr>
-      <th>Title</th>
-      <th>Listen</th>
-    </tr>
-    <% data.body.items.forEach(title => { %>
-    <tr>
-      <td><%- title.name %></td>
-      <td> <audio controls>
-          <source src="<%- title.preview_url %>" type="audio/mpeg">
-        </audio></td>
-    </tr>
-    <% }) %>
-  </table>
-
+<ul class="list-group list-group-flush">
+  <li
+    class="list-group-item d-flex justify-content-between align-items-center mx-5"
+  >
+    <h2>Title</h2>
+    <h2>Listen</h2>
+  </li>
+  <% data.body.items.forEach(title => { %>
+  <li
+    class="list-group-item d-flex justify-content-between align-items-center mx-5"
+  >
+    <div><%- title.name %></div>
+    <div>
+      <audio controls>
+        <source src="<%- title.preview_url %>" type="audio/mpeg" />
+      </audio>
+    </div>
+  </li>
+  <% }) %>
+</ul>

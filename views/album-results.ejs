@@ -1,21 +1,29 @@
 <!-- Artist name -->
-<h2><%- data.body.items[0].artists[0].name %></h2>
-<div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap">
-
+<div class="d-flex justify-content-center" style="color: white">
+  <h2><%- data.body.items[0].artists[0].name %></h2>
+</div>
+<div
+  style="
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  "
+>
   <!-- display all album names with image  -->
   <% data.body.items.forEach(album => { %>
-    <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; width: 300px;">
-    <%- album.name %> 
+  <div class="card mb-2" style="width: 18rem">
     <% if(album.images.length){ %>
-      <img src="<%- album.images[2].url %>">
-      <% } else{ %>
-      <img alt="No Picture Available">
-      <% } %>
-
-      <a href="/albums/tracks/<%- album.id %>">
-        <input type="button" name="trackList" value="View Tracks">
-      </a>
+    <img src="<%- album.images[1].url %>" />
+    <% } else{ %>
+    <img alt="No Picture Available" />
+    <% } %>
+    <div class="card-body">
+      <p class="card-title"><%- album.name %></p>
+      <a href="/albums/tracks/<%- album.id %>" class="btn btn-primary"
+        >View Tracks</a
+      >
     </div>
+  </div>
   <% }) %>
-
 </div>

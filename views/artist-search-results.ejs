@@ -1,20 +1,22 @@
-<div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap;">
+<div class="d-flex" style="
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  ">
   <!-- name, image, button -->
 
   <% data.body.artists.items.forEach(artist => { %>
-  <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; width: 400px; height:auto;">
-    <h3><%- artist.name %></h3>
-
-
+  <div class="card mb-2" style="width: 18rem">
     <% if(artist.images.length){ %>
-    <img src="<%- artist.images[2].url %>">
+    <img src="<%- artist.images[1].url %>" />
     <% } else{ %>
-    <img src="https://cdn.vectorstock.com/i/preview-1x/66/14/default-avatar-photo-placeholder-profile-picture-vector-21806614.jpg">
+    <img src="https://cdn.vectorstock.com/i/preview-1x/66/14/default-avatar-photo-placeholder-profile-picture-vector-21806614.jpg" />
     <% } %>
-
-    <a href="/albums/<%- artist.id %>">
-      <input type="button" name="albumList" value="View Albums">
-    </a>
+    <div class="card-body">
+      <p class="card-title"><%- artist.name %></p>
+      <a href="/albums/<%- artist.id %>" class="btn btn-primary">View Albums</a>
+    </div>
   </div>
-    <% }) %>
-  </div>
+  <% }) %>
+</div>
